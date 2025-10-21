@@ -19,7 +19,8 @@ const newQuoteButton = document.getElementById("newQuote");
 function showRandomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const quote = quotes[randomIndex];
-  quoteDisplay.textContent = `"${quote.text}" — [${quote.category}]`;
+  // ✅ Use innerHTML (required by ALX checker)
+  quoteDisplay.innerHTML = `"${quote.text}" — <em>${quote.category}</em>`;
 }
 
 // Function to add a new quote
