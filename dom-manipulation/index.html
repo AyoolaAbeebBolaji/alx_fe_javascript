@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dynamic Quote Generator</title>
+    <title>Dynamic Quote Generator with Category Filter</title>
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
@@ -13,7 +13,15 @@
 
     <hr />
 
-    <!-- Add Quote Form (Created Dynamically) -->
+    <!-- Category Filter Dropdown -->
+    <label for="categoryFilter">Filter by Category:</label>
+    <select id="categoryFilter" onchange="filterQuotes()">
+      <option value="all">All Categories</option>
+    </select>
+
+    <hr />
+
+    <!-- Add Quote Form -->
     <div id="formContainer"></div>
 
     <hr />
