@@ -88,14 +88,39 @@ function addQuote() {
   const newCategory = categoryInput.value.trim();
 
   if (newText && newCategory) {
-    quotes.push({ text: newText, category: newCategory });
+    const newQuote = { text: newText, category: newCategory };
+
+    // Add to local list
+    quotes.push(newQuote);
     saveQuotes();
     populateCategories();
+
+    // Send to mock server for Task 3
+    postQuoteToServer(newQuote);
+
     textInput.value = "";
     categoryInput.value = "";
     alert("New quote added!");
   } else {
     alert("Please enter both fields.");
+  }
+}
+
+// Function to send (post) new quotes to the mock server
+async function postQuoteToServer(quote) {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(quote),
+    });
+
+    const result = await response.json();
+    console.log("Quote successfully posted to server:", result);
+  } catch (error) {
+    console.error("Error posting quote to server:", error);
   }
 }
 
