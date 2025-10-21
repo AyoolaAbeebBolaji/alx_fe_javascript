@@ -234,6 +234,24 @@ async function syncWithServer() {
   }
 }
 
+// Function to simulate fetching quotes from the server
+async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const serverQuotes = await response.json();
+
+    // Simulate merging server data with local quotes
+    if (serverQuotes && serverQuotes.length > 0) {
+      console.log("Fetched quotes from server:", serverQuotes);
+      // Merge or replace local quotes
+      localStorage.setItem("quotes", JSON.stringify(quotes));
+      alert("Quotes synced with server!"); // ✅ Required UI notification
+    }
+  } catch (error) {
+    console.error("Error syncing with server:", error);
+  }
+}
+
 // -----------------------------
 // INITIALIZATION
 // -----------------------------
