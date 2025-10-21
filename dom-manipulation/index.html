@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dynamic Quote Generator with Category Filter</title>
+    <title>Dynamic Quote Generator (Data Sync Enabled)</title>
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
@@ -13,7 +13,6 @@
 
     <hr />
 
-    <!-- Category Filter Dropdown -->
     <label for="categoryFilter">Filter by Category:</label>
     <select id="categoryFilter" onchange="filterQuotes()">
       <option value="all">All Categories</option>
@@ -21,12 +20,10 @@
 
     <hr />
 
-    <!-- Add Quote Form -->
     <div id="formContainer"></div>
 
     <hr />
 
-    <!-- JSON Import/Export -->
     <button id="exportJson">Export Quotes (JSON)</button>
     <input
       type="file"
@@ -34,6 +31,12 @@
       accept=".json"
       onchange="importFromJsonFile(event)"
     />
+
+    <hr />
+
+    <!-- Sync Controls -->
+    <button id="syncQuotes">Sync with Server</button>
+    <div id="syncStatus" style="margin-top: 10px; color: green"></div>
 
     <script src="script.js"></script>
   </body>
