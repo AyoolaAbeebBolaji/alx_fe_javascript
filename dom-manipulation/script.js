@@ -223,3 +223,30 @@ filterQuotes();
 
 // Auto-sync every 60 seconds (for realism)
 setInterval(syncWithServer, 60000);
+
+// Simulate fetching quotes from a mock server (e.g., JSONPlaceholder)
+async function fetchQuotesFromServer() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const serverData = await response.json();
+
+    // Simulate that each server quote has a 'title' and 'body' similar to our local quotes
+    const serverQuotes = serverData.slice(0, 5).map((item) => ({
+      text: item.title,
+      author: "Server Author",
+      category: "Server",
+    }));
+
+    console.log("Fetched quotes from server:", serverQuotes);
+
+    // Conflict resolution: Server data takes precedence
+    const localQuotes = JSON.parse(localStorage.getItem("quotes")) || [];
+    const mergedQuotes = [...serverQuotes, ...localQuotes];
+    localStorage.setItem("quotes", JSON.stringify(mergedQuotes));
+
+    displayQuotes(mergedQuotes);
+    alert("Quotes synced successfully with server!");
+  } catch (error) {
+    console.error("Error fetching quotes from server:", error);
+  }
+}
