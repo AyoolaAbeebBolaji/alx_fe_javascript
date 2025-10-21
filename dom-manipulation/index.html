@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamic Quote Generator</title>
   </head>
   <body>
     <h1>Dynamic Quote Generator</h1>
 
-    <!-- ALX checker expects an element with id="quoteDisplay" -->
-    <div id="quoteDisplay"></div>
-
-    <!-- ALX checker expects a button with id="newQuote" -->
+    <div id="quoteDisplay">Click the button to show a quote!</div>
     <button id="newQuote">Show New Quote</button>
 
-    <div>
-      <!-- Inputs and add button that checker will expect -->
-      <input id="newQuoteText" type="text" placeholder="Enter a new quote" />
-      <input
-        id="newQuoteCategory"
-        type="text"
-        placeholder="Enter quote category"
-      />
-      <button id="addQuote">Add Quote</button>
-    </div>
+    <hr />
+
+    <!-- Add Quote Form (Created Dynamically) -->
+    <div id="formContainer"></div>
+
+    <hr />
+
+    <!-- JSON Import/Export -->
+    <button id="exportJson">Export Quotes (JSON)</button>
+    <input
+      type="file"
+      id="importFile"
+      accept=".json"
+      onchange="importFromJsonFile(event)"
+    />
 
     <script src="script.js"></script>
   </body>
